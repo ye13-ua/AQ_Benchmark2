@@ -82,11 +82,11 @@ int main(int argc, char * argv[]) {
     if (!parameter_parser(argc, argv)) return -1;
 
     // Ejecución de los algoritmos
-    if (flagShell) TotalBenchTime += BenchShellSort();
+    if (flagShell) TotalBenchTime += BenchShellSort(); // ShellSort
     if (flagBucket);
     if (flagCounting);
     if (flagInsertion);
-    if (flagCribaEratos) TotalBenchTime += mainCriba();
+    if (flagCribaEratos) TotalBenchTime += mainCriba(); // Criba
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
 

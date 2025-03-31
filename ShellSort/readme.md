@@ -9,6 +9,23 @@
  - a
 
 # Uso de BENCH2.o
+## Archivos
+### Headers
+Cada algoritmo tiene su header apropiado para la comunicación entre diferentes archivos.
+Dentro de dicho header siempre estará al menos la función que implementa el algoritmo completo.
+### CPP
+Cada algoritmo tiene su archivo fuente con los métodos "privados". Cada algoritmo estarásiempre comentado de manera que nos parezca apropiada al contexto. La única regla global que siguen los algoritmos es el tipo de datos de salida. Obligatoriamente **std::chrono::milliseconds**.
+### Misc
+- Source.cpp es el archivo con el main del programa, contiene parcialmente la interfáz y el cálculo del tiempo global.
+- readme.md existe exclusivamente para que pudan leer esto.
+## Ejecución
+Si se desea, se puede ejecutar con el ejecutabel tipo .exe o descarggando el proyecto de github.
+- En el caso de usar el ejecutable, simplemente hacerle doble click.
+- En el caso de github+VisualStudio, es imprescindible tener el depurador en el **modo x86 (Por defecto es x64)**. El **Debugger/Linker encontrará el main facilelmente de manera autónoma**.
+
+- Aparte, si se quieren utilizar argumentos de entrada, recomendamos usar la opción del debug en VisualStudio.
+Para utilizar parámetros de entrada, hacer click derecho sobre el proyecto `Bench2o` y en **`Propiedades de configuración`** ---> **`Depuración`**, estará la casilla **Argumentos de comandos** donde se pueden introducir los parámetros.
+> Ej: -aco 12345 -esi
 ## Parámetros
 Cada parámetro válido, tiene que empezar con el caracter '-' y pueden ir tanto juntos como separados
 1. 's' - ShellSort

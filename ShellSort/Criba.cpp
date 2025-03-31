@@ -192,7 +192,7 @@ std::chrono::milliseconds mainCriba() {
     auto startBench = high_resolution_clock::now();
 
     //Ejecutamos benchmark y su diseño en terminal
-    printf("BENCHMARK: CRIBA DE ERATÓSTENES\n");
+    printf("\nBENCHMARK: CRIBA DE ERATÓSTENES\n");
     ejecutarBenchmark();
 
     //Terminamos el tiempo de ejecutacion de benchmark con calculacion de tiempo
@@ -201,8 +201,6 @@ std::chrono::milliseconds mainCriba() {
 
     //Ponemos la representación de tiempo total de benchmark y ponemos la pausa
     printf("El tiempo de ejecutacion de benchmark es: %ld milisegundos\n", tiempoBench.count());
-    printf("\nPulse <Return> para finalizar...\n");
-    getchar();
 
     return tiempoBench;
 }
