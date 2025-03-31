@@ -4,6 +4,7 @@
 
 // Headers de algoritmos
 #include "ShellSort.h"
+#include "Criba.h"
 
 // Banderas de ejecución de algoritmos
 bool flagShell = false; // s
@@ -85,7 +86,7 @@ int main(int argc, char * argv[]) {
     if (flagBucket);
     if (flagCounting);
     if (flagInsertion);
-    if (flagCribaEratos);
+    if (flagCribaEratos) TotalBenchTime += mainCriba();
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
 
