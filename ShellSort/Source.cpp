@@ -46,6 +46,7 @@ bool parameter_parser(int argc, char * argv[]) {
             for (unsigned int j = 1; argv[i][j] != '\0'; j++) {
                 switch (argv[i][j]) {
                 case 's': flagShell = true; break;
+                case 'b': flagBucket = true; break;
                 case 'c': flagCounting = true; break;
                 case 'i': flagInsertion = true; break;
                 case 'e': flagCribaEratos =  true; break;
