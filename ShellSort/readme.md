@@ -7,7 +7,9 @@
  - Jesús Ballesteros Navarro
  - a
  - a
-
+# Objetivo del BENCH2.o
+Se desea implementar un benchmark que mida la capacidad de la CPU ejecutando varios algoritmos de ordenación de vectores sobre vectores de gran tamaño observando el tiempo en ms que tardan en cada ocasión cada algoritmo, se implementan dos vectores uno de enteros y otro de racionales.
+Todos los algoritmos se implementan y se prueban en las tres versiones pedidas del benchmark, es decir, en C++, en x86 y en x86 usando SSE.
 # Uso de BENCH2.o
 ## Archivos
 ### Headers
