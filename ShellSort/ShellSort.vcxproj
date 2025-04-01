@@ -130,12 +130,14 @@
   <ItemGroup>
     <ClCompile Include="..\CountingSort.cpp" />
     <ClCompile Include="Criba.cpp" />
+    <ClCompile Include="InsertionSort.cpp" />
     <ClCompile Include="ShellSort.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CountingSort.h" />
     <ClInclude Include="Criba.h" />
+    <ClInclude Include="InsertionSort.h" />
     <ClInclude Include="ShellSort.h" />
   </ItemGroup>
   <ItemGroup>
