@@ -9,7 +9,7 @@
 #include <ctime>    // Tiempo para semilla aleatoria
 #include <cmath>    // potencias
 #include <chrono>   // Cronómetro del tiempo
-#include <emmintrin.h> // SSE
+#include <emmintrin.h> // Intel SSE
 
 // Tamaño de vector genérico
 const unsigned int vecSize = static_cast<unsigned int>(std::pow(2,16));
@@ -72,92 +72,90 @@ void shellSort(std::vector<float> & seq) {
 // ASM Shell sort para enteros
 void shellSortAsm(std::vector<int> & seq) {
     // Segemnto C/C++
-    int* seq_ptr = &seq[0];
-    unsigned int size = seq.size();
-    unsigned int gap = size / 2;
-    
+    int* seq_ptr = &seq[0]; // Primer elemento puntero
+    unsigned int size = seq.size(); // Tamaño
+    unsigned int gap = size / 2;  // Gap = Tamaño/2
+
+    // Utilizamos el bucle de C para envolver el script de asm
     while (gap>0) {
+        // Bucle de recorrido gap
         for (unsigned int i = gap; i < size; i++) {
-            int temp = seq_ptr[i];
+            int temp = seq_ptr[i]; // Valor actual en temporal
             unsigned int j = i;
             __asm {
-                // Load j into EAX
-                mov eax, j          // EAX = current index (j)
-                mov ebx, gap        // EBX = gap value
-                mov edi, seq_ptr
+                mov eax, j // EAX = índice
+                mov ebx, gap // EBX = gap o distancia
+                mov edi, seq_ptr // EDI = punto inicial del vector
 
                 inner_loop :
-                // If j < gap, exit inner loop
+                // Si j < gap, salir del bucle interno asm
                 cmp eax, ebx
                     jb inner_loop_exit
 
-                    // Calculate address: &arr[0] + (eax - ebx) * 4
+                    // Calculamos la dirección &arr[0] + (eax - ebx) * 4
                     mov ecx, eax
-                    sub ecx, ebx        // ecx = j - gap
-                    mov edx, dword ptr[edi + ecx * 4] // load arr[j - gap]
+                    sub ecx, ebx // ECX = j - gap
+                    mov edx, dword ptr[edi + ecx * 4] // EDX = cargamos valor de [inicio - ecx(j-gap) * 4]
 
-                    // Compare arr[j - gap] with temp
+                    // Compara el valor obtenido con el guardado como temp
+                    // Si el valor nuevo es menos o igual a guardado, salimos
                     cmp edx, temp
                     jle inner_loop_exit
 
-                    // Move arr[j - gap] to arr[j]
+                    //Si no, se mueve el nuevo a la posición de [j]
                     mov dword ptr[edi + eax * 4], edx
 
-                    // Decrement j by gap (update EAX)
+                    // j-gap (j en eax)
                     sub eax, ebx
                     jmp inner_loop
 
                     inner_loop_exit :
-                // Save the updated j back to variable j
+                // Guardamos el valor de eax en j
                 mov j, eax
             }
+            // Se mueve el puntero tras ejecutaar parte asm
             seq_ptr[j] = temp;
         }
+        // Reducir el gap en 2
         gap /= 2;
     }
 }
 
 // ASM Shell sort para floats
-// Lo mismo que antes pero con instrucciónes apropiadas para FPU
+// Temporalmente/Permanentemente reemplazado por copia del ASM para enteros debido a problemas de inestabilidad
+// Si se lee este mensaje,implica que lo más probable es que no me dio tiempo a reemplkazarlo por código adaptado a FPU de manera apropiada
 void shellSortAsm(std::vector<float> & seq) {
     // Segemnto C/C++
-    float* seq_ptr = &seq[0];
-    unsigned int size = seq.size();
+    float* seq_ptr = &seq[0]; 
+    unsigned int size = seq.size(); 
     unsigned int gap = size / 2;
 
     while (gap > 0) {
         for (unsigned int i = gap; i < size; i++) {
-            float temp = seq_ptr[i];
+            float temp = seq_ptr[i]; 
             unsigned int j = i;
             __asm {
-                // Load j into EAX
-                mov eax, j          // EAX = current index (j)
-                mov ebx, gap        // EBX = gap value
+                mov eax, j          
+                mov ebx, gap        
                 mov edi, seq_ptr
 
                 inner_loop :
-                // If j < gap, exit inner loop
                 cmp eax, ebx
                     jb inner_loop_exit
 
-                    // Calculate address: &arr[0] + (eax - ebx) * 4
                     mov ecx, eax
-                    sub ecx, ebx        // ecx = j - gap
-                    mov edx, dword ptr[edi + ecx * 4] // load arr[j - gap]
+                    sub ecx, ebx        
+                    mov edx, dword ptr[edi + ecx * 4]
 
-                    // Compare arr[j - gap] with temp
                     cmp edx, temp
                     jle inner_loop_exit
 
-                    // Move arr[j - gap] to arr[j]
                     mov dword ptr[edi + eax * 4], edx
 
-                    // Decrement j by gap (update EAX)
                     sub eax, ebx
                     jmp inner_loop
 
                     inner_loop_exit :
-                // Save the updated j back to variable j
                 mov j, eax
             }
             seq_ptr[j] = temp;
@@ -167,33 +165,40 @@ void shellSortAsm(std::vector<float> & seq) {
 }
 
 // ASM ShellSort con SSE/SIMD para enteros
+// Algo similar al ASM normal pero con más trucos
+// Lo único es que no me salió implementar una paralelización superior, por locual la paralelización de verdad ocurre solo parcialmente,
+// esto reduce considerablemente el rendimiento en el contexto del tamaño de problema establecido.
 void shellSortAsmSSE(std::vector<int>& seq) {
-    int* arr = seq.data();
-    unsigned int size = seq.size();
-    unsigned int gap = size / 2;
+    int* arr = seq.data(); // Puntero a datos del vector
+    unsigned int size = seq.size(); // Tamaño
+    unsigned int gap = size / 2; // Gap
 
+    // Bucle externo
     while (gap > 0) {
+        // Bucel gap
         for (unsigned int i = gap; i < size; i++) {
-            int temp = arr[i];
+            int temp = arr[i]; // Guardamos valor actual
             int j = i;
-            // When gap is 1, the array is contiguous and we can try to use SSE
+            // Condición de uso SSE
             if (gap == 1 && j >= 4) {
-                // Create a vector with 'temp' in all four lanes
+                // Vector temporal con 4 elementos
                 __m128i tempVec = _mm_set1_epi32(temp);
-                // Try to process blocks of 4 integers preceding arr[j]
+                // Se procesan 4 elementos anteriores
                 while (j >= 4) {
-                    // Load four contiguous integers from arr[j-4] to arr[j-1]
+                    // Elementos desde j-4 hasta j-1
                     __m128i block = _mm_loadu_si128((__m128i*)(arr + j - 4));
-                    // Compare each element of the block with temp; each lane gets 0xFFFFFFFF if block element > temp
+                    // Comparamos elementos de dos bloques de 4
                     __m128i cmp = _mm_cmpgt_epi32(block, tempVec);
-                    // Generate a bitmask from the comparisons (each 32-bit element produces 4 bits)
+                    // Se genera una máscara en base a la comparación
                     int mask = _mm_movemask_epi8(cmp);
-                    // If none of these four elements are greater than temp, we can exit the SSE loop
+                    
+                    // La máscara equivaldrá a 0 si ningún elemento es mayor que temp
                     if (mask == 0)
                         break;
-                    // Otherwise, process one element (the one immediately before j)
+                   
+                    // Si eso no es así, se procesa el j-1
                     if (arr[j - 1] > temp) {
-                        arr[j] = arr[j - 1];
+                        arr[j] = arr[j - 1]; // Movemos j-1 a posición j
                         j--;
                     }
                     else {
@@ -201,7 +206,8 @@ void shellSortAsmSSE(std::vector<int>& seq) {
                     }
                 }
             }
-            // Fallback to scalar shifting for the remaining elements
+            
+            // En el caso de no poder usar paralelización SSE, utilizamos algoritmo estándart
             while (j >= gap && arr[j - gap] > temp) {
                 arr[j] = arr[j - gap];
                 j -= gap;
@@ -226,22 +232,22 @@ void shellSortAsmSSE(std::vector<float>& seq) {
         for (unsigned int i = gap; i < size; i++) {
             float temp = arr[i];
             int j = i;
-            // When gap is 1, the array is contiguous and we can try to use SSE
+            
             if (gap == 1 && j >= 4) {
-                // Create a vector with 'temp' in all four lanes
+                
                 __m128 tempVec = _mm_set1_ps(temp);
-                // Try to process blocks of 4 integers preceding arr[j]
+                
                 while (j >= 4) {
-                    // Load four contiguous integers from arr[j-4] to arr[j-1]
+                    
                     __m128 block = _mm_loadu_ps(arr + j - 4);
-                    // Compare each element of the block with temp; each lane gets 0xFFFFFFFF if block element > temp
+
                     __m128 cmp = _mm_cmpgt_ps(block, tempVec);
-                    // Generate a bitmask from the comparisons (each 32-bit element produces 4 bits)
+
                     int mask = _mm_movemask_ps(cmp);
-                    // If none of these four elements are greater than temp, we can exit the SSE loop
+
                     if (mask == 0)
                         break;
-                    // Otherwise, process one element (the one immediately before j)
+
                     if (arr[j - 1] > temp) {
                         arr[j] = arr[j - 1];
                         j--;
@@ -251,7 +257,7 @@ void shellSortAsmSSE(std::vector<float>& seq) {
                     }
                 }
             }
-            // Fallback to scalar shifting for the remaining elements
+
             while (j >= gap && arr[j - gap] > temp) {
                 arr[j] = arr[j - gap];
                 j -= gap;
