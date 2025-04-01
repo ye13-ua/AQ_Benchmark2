@@ -100,6 +100,26 @@ Complejidad espacial: O(1), es constante ya que opera sobre el mismo set de dato
 
 
 ### CountingSort
+[Programiz - CountingSort](https://www.programiz.com/dsa/counting-sort#:~:text=Counting%20sort%20is%20a%20sorting,index%20of%20the%20auxiliary%20array.)
+![CountingSortgif](https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2Fjavarevisited%2Fcounting-sort-algorithm-implementation-in-java-an-analysis-of-stability-parallelizability-and-48ac7e43bcf1&psig=AOvVaw2Acfs7PFNqn8PHgj9JbToN&ust=1743630721120000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKD6kuDot4wDFQAAAAAdAAAAABAZ)]
+CountingSort es un algoritmo de ordenación no comparativo. 
+En lugar de comparar elementos, CountingSort cuenta la cantidad de veces que cada valor ocurre en el conjunto de datos, y luego utiliza esa información para colocar los elementos en el orden correcto. 
+Es muy eficiente cuando los elementos que se desean ordenar están dentro de un rango pequeño y conocido.
+Algoritmo:
+
+> 1 - Encontrar el valor máximo (max) en la lista de entrada. 
+> 2 - Crear un array de conteo donde cada índice representará un valor en el conjunto de datos y almacenará cuántas veces aparece ese valor. 
+> 3 - Para cada elemento en la lista original, incrementar el valor correspondiente en el array de conteo. 
+> 4 - Modificar el array de conteo para reflejar las posiciones acumuladas de los elementos. 
+> 5 - Colocar los elementos en la lista de salida utilizando el array de conteo.
+
+Complejidad caso peor: O(n + k), donde n es el número de elementos a ordenar y k es el rango de los números (es decir, el valor máximo). 
+Complejidad caso mejor: O(n + k) 
+Complejidad caso promedio: O(n + k)
+Complejidad espacial: O(n + k), ya que requiere espacio adicional para el array de conteo.
+
+Nota: CountingSort es extremadamente eficiente para conjuntos de datos con un rango limitado de valores.
+
 ### InsertionSort
 
 ## Algoritmos matemáticos
