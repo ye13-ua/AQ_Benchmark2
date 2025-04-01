@@ -25,6 +25,6 @@ milliseconds obtenerTiempo(int);
 
 //Funciones principales de demonstrar resultados
 void ejecutarBenchmark();
-std::chrono::milliseconds mainCriba();
+std::chrono::milliseconds BenchCriba();
 
 #endif
