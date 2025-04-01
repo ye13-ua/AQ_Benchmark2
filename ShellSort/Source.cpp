@@ -1,20 +1,20 @@
 #include <iostream> // cout
 #include <vector>   // Vectores de datos
-#include <chrono>   // Cronómetro del tiempo
+#include <chrono>   // CronÃ³metro del tiempo
 
 // Headers de algoritmos
 #include "ShellSort.h"
 #include "CountingSort.h"
 #include "Criba.h"
 
-// Banderas de ejecución de algoritmos
+// Banderas de ejecuciÃ³n de algoritmos
 bool flagShell = false; // s
 bool flagBucket = false; // b
 bool flagCounting = false; // c
 bool flagInsertion = false; // i
 bool flagCribaEratos = false; // e
 
-// Título
+// TÃ­tulo
 // Se guarda dentro del codigo para ahorrar la necesidad de manipular archivos
 char title[] = R"(
 __/\\\\\\\\\\\\\____/\\\\\\\\\\\\\\\__/\\\\\_____/\\\________/\\\\\\\\\__/\\\________/\\\____/\\\\\\\\\_________________________        
@@ -29,19 +29,19 @@ __/\\\\\\\\\\\\\____/\\\\\\\\\\\\\\\__/\\\\\_____/\\\________/\\\\\\\\\__/\\\___
 )";
 
 bool parameter_parser(int argc, char * argv[]) {
-    // Mostramos por pantalla los parámetros introducidos
+    // Mostramos por pantalla los parÃ¡metros introducidos
     std::cout << "\t{" << argv[0] << "} - FOR MORE INFO: readme.md\n";
     std::cout << "\n\t[PARAMETERS: " << argc-1 << "]\n";
     for (unsigned int p = 1; p < argc; p++) {
         std::cout << "\t[" << p << ". " << argv[p] << "]\n";
     }
-    // Sin parámetros se ejecuta todo por defecto
+    // Sin parÃ¡metros se ejecuta todo por defecto
     if (argc == 1) {
         flagBucket = flagCounting = flagCribaEratos = flagInsertion = flagShell = true;
     }
-    // Con parámetros se evalua uno por uno
+    // Con parÃ¡metros se evalua uno por uno
     for (unsigned int i = 1; i<argc; i++) {
-        // Cadapa rámetro válido tiene que empezar con '-' para ser procesado
+        // Cadapa rÃ¡metro vÃ¡lido tiene que empezar con '-' para ser procesado
         if (argv[i][0]=='-') {
             for (unsigned int j = 1; argv[i][j] != '\0'; j++) {
                 switch (argv[i][j]) {
@@ -60,7 +60,7 @@ bool parameter_parser(int argc, char * argv[]) {
             std::cout << "\n\tWARNING: INVALID PARAMETER AT [" << i << "] WITH VALUE: [" << argv[i] << "] - PARAMETER IGNORED\n";
         }
     }
-    // En caso de que se intoduce al menos un parámetro, y no es válido
+    // En caso de que se intoduce al menos un parÃ¡metro, y no es vÃ¡lido
     if (!flagBucket && !flagCounting && !flagCribaEratos && !flagInsertion && !flagShell) return false;
     
     // Lista con Benches a ejecutar
@@ -78,14 +78,14 @@ int main(int argc, char * argv[]) {
     // Escribe el titulo
     std::cout << title;
 
-    // Leemos y validamos los parámetros
+    // Leemos y validamos los parÃ¡metros
     if (!parameter_parser(argc, argv)) return -1;
 
-    // Ejecución de los algoritmos
+    // EjecuciÃ³n de los algoritmos
     if (flagShell) TotalBenchTime += BenchShellSort(); // ShellSort
     if (flagCounting) TotalBenchTime += BenchCountingSort();
     if (flagInsertion);
-    if (flagCribaEratos) TotalBenchTime += mainCriba(); // Criba
+    if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
 
