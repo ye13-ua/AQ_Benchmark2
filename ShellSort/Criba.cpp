@@ -184,7 +184,7 @@ void ejecutarBenchmark()
 }
 
 //Funcion main de metodo Criba
-std::chrono::milliseconds mainCriba() {
+std::chrono::milliseconds BenchCriba() {
 
     using namespace std::chrono;
 
