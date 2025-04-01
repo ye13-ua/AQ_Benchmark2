@@ -4,7 +4,7 @@
 
  - Yevhenii Edelhsteyn
  - Marat Galliulin
- - a
+ - Jesús Ballesteros Navarro
  - a
  - a
 
@@ -29,7 +29,6 @@ Para utilizar parámetros de entrada, hacer click derecho sobre el proyecto `Ben
 ## Parámetros
 Cada parámetro válido, tiene que empezar con el caracter '-' y pueden ir tanto juntos como separados
 1. 's' - ShellSort
-2. 'b' - BucketSort
 3. 'c' - CountingSort
 4. 'i' - InsertionSort
 5. 'e' - CribaEratostenes
@@ -75,9 +74,10 @@ Ejemplo del log del programa: `-aco 12345 -esi`
 1. ShellSort 
 	> Yevhenii Edelshteyn
 	> ShellSort.cpp || ShellSort.h
-3. BucketSort
-4. CountingSort
-5. InstertionSort
+2. CountingSort
+    > Jesús Ballesteros Navarro
+	> CoutingSort.cpp || CoutingSort.h
+3. InstertionSort
 
 ### ShellSort
 [GeeksForGeeks - ShellSort](https://www.geeksforgeeks.org/shell-sort/)
@@ -98,7 +98,7 @@ Complejidad espacial: O(1), es constante ya que opera sobre el mismo set de dato
 
 > Tanto el caso mejor como peor son superiores en ShellSort en comparación con InsertionSort, pero el caso promeidio de InsertionSort es considerablemente peor que el caso promedio de ShellSort O(n ^2^) > O(n ^1.25^)
 
-### BucketSort
+
 ### CountingSort
 ### InsertionSort
 
