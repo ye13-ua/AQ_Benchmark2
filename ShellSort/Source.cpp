@@ -91,6 +91,5 @@ int main(int argc, char * argv[]) {
 
     // Salida del programa
     std::cin.get();
-
     return 0;
 }

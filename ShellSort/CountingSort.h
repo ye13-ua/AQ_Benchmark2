@@ -5,13 +5,14 @@
 #include <vector>
 #include <chrono>	
 #include <iostream>
+using namespace std;
 
-std::chrono::milliseconds BenchCountingSort();
+chrono::milliseconds BenchCountingSort();
 
 //Ejecución del algoritmo
 void CountingSortExecution();
 void CountingSortAsmExecution();
-void CountingSortAsmSSExecution();
+void CountingSortAsmSSEExecution();
 
 //Implementación del algoritmo
 void countingSort(vector<int>& seq);
