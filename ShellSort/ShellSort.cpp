@@ -453,9 +453,10 @@ std::chrono::milliseconds BenchShellSort() {
     std::cout << "\n/-S-h-e-l-l-S-o-r-t---" << std::flush;
 
     // Ejecución de los segmentos separados
+    ShellSortCExecution();
     ShellSortAsmExecution();
     ShellSortAsmSSEExecution();
-    ShellSortCExecution();
+    
 
     // El porcentaje que indica el aumento de rendimiento en respecto a versión anterior
     std::cout << "\n|\n| COMPARING TO C/C++:\n| ASM BOOST: " << (GlobalCTime / GlobalAsmTime) * 100 << "%";
