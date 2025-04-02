@@ -1,7 +1,7 @@
 ﻿#include "Criba.h"
 
-#define MAX_PRIME 1000000  // El numero limite de numeros primos
-#define REPETICIONES 180  // Repiticion de proceso, para mejorar y demonstrar el resultado en manera m�s clara
+#define MAX_PRIME 4294967 // El numero limite de numeros primos
+#define REPETICIONES 200  // Repiticion de proceso, para mejorar y demonstrar el resultado en manera m�s clara
 
 using namespace std;
 
