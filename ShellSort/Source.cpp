@@ -6,6 +6,7 @@
 #include "ShellSort.h"
 #include "CountingSort.h"
 #include "Criba.h"
+#include "InsertionSort.h"
 
 // Banderas de ejecución de algoritmos
 bool flagShell = false; // s
@@ -46,7 +47,6 @@ bool parameter_parser(int argc, char * argv[]) {
             for (unsigned int j = 1; argv[i][j] != '\0'; j++) {
                 switch (argv[i][j]) {
                 case 's': flagShell = true; break;
-                case 'b': flagBucket = true; break;
                 case 'c': flagCounting = true; break;
                 case 'i': flagInsertion = true; break;
                 case 'e': flagCribaEratos =  true; break;
@@ -85,7 +85,7 @@ int main(int argc, char * argv[]) {
     // Ejecución de los algoritmos
     if (flagShell) TotalBenchTime += BenchShellSort(); // ShellSort
     if (flagCounting) TotalBenchTime += BenchCountingSort();
-    if (flagInsertion);
+    if (flagInsertion) TotalBenchTime += InsertionSort().BenchInsertionSort();
     if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
