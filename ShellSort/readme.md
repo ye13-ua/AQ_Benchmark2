@@ -157,4 +157,18 @@ Integración en algoritmos híbridos (como TimSort)
 
 ## Algoritmos matemáticos
 1. Criba de Eratosthenes
+> Marat Galiullin
+> Criba.h || Criba.cpp
+
 ### Criba de Eratosthenes
+[Descripcion Global de metodo](https://micalculadoracientifica.com/criba-de-eratostenes/)
+![Criba_Gif](https://divulgadores.com/wp-content/uploads/2018/09/criba_de_eratostenes_animacion.gif)
+Tenemos la ejecutación de metodo de "Criba de Eratosthenes", que es un metodo sencillo para encontrar todos los números primos menores que un número dado.
+
+Funciona como:
+>1) **Lista inicial:** Escribe todos los números desde 2 hasta el límite deseado.
+>2. **Marcar múltiplos:** Comienza con el primer número (2) y elimina todos sus múltiplos
+>3. **Repetir el proceso:** Pasa al siguiente número que no ha sido eliminado (3) y elimina sus múltiplos. Continúa con el siguiente número no marcado.
+>4. **Finalizar:** Cuando el cuadrado del siguiente número no marcado es mayor que el límite, detén el proceso. Los números que quedan sin eliminar son primos.
+
+> Es un metodo eficiente y facil de entender, que solo tiene la referencia a la lista de numeros y su eliminación en proceso sistematico. También se puede encontrar primos hasta el valor más grande posible sin necesidad de recorrer todos números en manera individual.
