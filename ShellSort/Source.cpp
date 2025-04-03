@@ -85,7 +85,7 @@ int main(int argc, char * argv[]) {
     // Ejecución de los algoritmos
     if (flagShell) TotalBenchTime += BenchShellSort(); // ShellSort
     if (flagCounting) TotalBenchTime += BenchCountingSort();
-    if (flagInsertion) TotalBenchTime += InsertionSort().BenchInsertionSort();
+    if (flagInsertion) TotalBenchTime += BenchInsertionSort();
     if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";

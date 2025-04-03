@@ -3,59 +3,35 @@
 
 #pragma once
 #include <iostream>		
-#include <iomanip>		// setw()
-#include <vector>		// Vectores
-//#include <cstdlib>		// Números (pseudo)aleatorios
-//#include <ctime>		// Tiempo para semilla aleatoria
-#include <cmath>		// potencias
-#include <chrono>		// Cronómetro del tiempo
-#include <emmintrin.h>	// Intel SSE
+#include <iomanip>		
+#include <vector>		
+#include <cmath>		
+#include <chrono>		
+#include <emmintrin.h>	
+#include <xmmintrin.h>
+#include <immintrin.h>
 #include <time.h>
 #include <stdlib.h> 
+#include <string> 
 
 using namespace std;
 
-const unsigned int vecSize = pow(2, 3);
+const unsigned int vecSize = pow(2, 16);
 
-class InsertionSort
-{
-	private:
-		vector<int> randomIntVector;
-		vector<float> randomFloatVector;
+void initSeed();
+bool sortVerifyInt(vector<int> vec);
+bool sortVerifyFloat(vector<float> vec);
 
-	public:
-		InsertionSort();
-		vector<int> generateIntVector(int vecSize);
-		vector<float> generateFloatVector(int vecSize);
-		std::chrono::milliseconds BenchInsertionSort();
+vector<int> generateIntVector(int vecSize);
+vector<float> generateFloatVector(int vecSize);
+std::chrono::milliseconds BenchInsertionSort();
 
-		void insertionSortExecutionC();
-		void insertionSortExecutionAsm();
-		void insertionSortExecutionSSE();
+vector<int> insertionSortExecutionC(vector<int> vec);
+vector<float> insertionSortExecutionC(vector<float> vec);
+vector<int> insertionSortExecutionAsm(vector<int> vec);
+vector<float> insertionSortExecutionAsm(vector<float> vec);
+vector<int> insertionSortExecutionSSE(vector<int> vec);
+vector<float> insertionSortExecutionSSE(vector<float> vec);
 
-
-
-	// BenchSort
-	//std::chrono::milliseconds BenchShellSort();
-
-	// Ejecuciónes de algoritmos con contadores integrados
-	//void ShellSortCExecution();
-	//void ShellSortAsmExecution();
-	//void ShellSortAsmSSEExecution();
-
-	// Algoritmos sueltos
-	//void shellSort(std::vector<int>& seq);
-	//void shellSort(std::vector<float>& seq);
-
-	//void shellSortAsm(std::vector<int>& seq);
-	//void shellSortAsm(std::vector<float>& seq);
-
-	//void shellSortAsmSSE(std::vector<int>& seq);
-	//void shellSortAsmSSE(std::vector<float>& seq);
-
-
-
-
-};
 
 #endif // !INSERTIONSORT_H_
