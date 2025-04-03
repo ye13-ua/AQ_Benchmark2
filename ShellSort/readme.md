@@ -5,8 +5,9 @@
  - Yevhenii Edelhsteyn
  - Marat Galliulin
  - Jesús Ballesteros Navarro
+ - Gladys Andrea Peveroni Martinez
  - a
- - a
+
 # Objetivo del BENCH2.o
 Se desea implementar un benchmark que mida la capacidad de la CPU ejecutando varios algoritmos de ordenación de vectores sobre vectores de gran tamaño observando el tiempo en ms que tardan en cada ocasión cada algoritmo, se implementan dos vectores uno de enteros y otro de racionales.
 Todos los algoritmos se implementan y se prueban en las tres versiones pedidas del benchmark, es decir, en C++, en x86 y en x86 usando SSE.
@@ -123,6 +124,36 @@ Complejidad espacial: O(n + k), ya que requiere espacio adicional para el array 
 > CountingSort es extremadamente eficiente para conjuntos de datos con un rango limitado de valores.
 
 ### InsertionSort
+InsertionSort
+
+[Programiz - Insertion Sort](https://www.programiz.com/dsa/insertion-sort)
+
+Insertion Sort es un algoritmo de ordenación basado en comparación.
+Construye la lista ordenada uno a uno, insertando cada nuevo elemento en su lugar correspondiente, similar a cómo ordenarías cartas en la mano.
+
+Este algoritmo es eficiente para listas pequeñas o listas que ya están casi ordenadas.
+Algoritmo:
+
+- 1 Empieza desde el segundo elemento (índice 1), considerando el primero como parte de la lista ordenada.
+- 2 Toma el elemento actual como la "clave".
+- 3 Compara la clave con los elementos a su izquierda, y los va desplazando hacia la derecha si son mayores que la clave.
+- 4 Inserta la clave en la posición correcta dentro de la parte ya ordenada.
+- 5 Repite el proceso hasta el final de la lista.
+
+
+Complejidad caso peor: O(n²) – Cuando la lista está en orden inverso
+Complejidad caso mejor: O(n) – Cuando la lista ya está ordenada
+Complejidad caso promedio: O(n²)
+Complejidad espacial: O(1) – In-place, no necesita memoria adicional significativa.
+
+Características:
+Algoritmo estable (mantiene el orden relativo de elementos iguales).
+No es adecuado para listas grandes debido a su complejidad cuadrática.
+
+Es excelente para:
+Listas pequeñas
+Listas casi ordenadas
+Integración en algoritmos híbridos (como TimSort)
 
 ## Algoritmos matemáticos
 1. Criba de Eratosthenes
