@@ -6,6 +6,7 @@
 #include "ShellSort.h"
 #include "CountingSort.h"
 #include "Criba.h"
+#include "InsertionSort.h"
 
 // Banderas de ejecución de algoritmos
 bool flagShell = false; // s
@@ -84,7 +85,7 @@ int main(int argc, char * argv[]) {
     // Ejecución de los algoritmos
     if (flagShell) TotalBenchTime += BenchShellSort(); // ShellSort
     if (flagCounting) TotalBenchTime += BenchCountingSort();
-    if (flagInsertion);
+    if (flagInsertion) TotalBenchTime += BenchInsertionSort();
     if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
