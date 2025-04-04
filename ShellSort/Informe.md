@@ -145,6 +145,8 @@ Complejidad espacial: O(n + k), por el uso de arreglos temporales y de conteo.
 ### CountingSort
 [Programiz - CountingSort](https://www.programiz.com/dsa/counting-sort#:~:text=Counting%20sort%20is%20a%20sorting,index%20of%20the%20auxiliary%20array.)
 
+![CountingSortgif](https://miro.medium.com/v2/resize:fit:1400/0*B-CyBxmCVUolqSjj.gif)
+
 CountingSort es un algoritmo de ordenación no comparativo. 
 En lugar de comparar elementos, CountingSort cuenta la cantidad de veces que cada valor ocurre en el conjunto de datos, y luego utiliza esa información para colocar los elementos en el orden correcto. 
 Es muy eficiente cuando los elementos que se desean ordenar están dentro de un rango pequeño y conocido.
