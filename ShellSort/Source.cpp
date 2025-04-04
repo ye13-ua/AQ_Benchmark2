@@ -11,7 +11,6 @@
 
 // Banderas de ejecución de algoritmos
 bool flagShell = false; // s
-bool flagBucket = false; // b
 bool flagCounting = false; // c
 bool flagInsertion = false; // i
 bool flagCribaEratos = false; // e
@@ -40,7 +39,7 @@ bool parameter_parser(int argc, char * argv[]) {
     }
     // Sin parámetros se ejecuta todo por defecto
     if (argc == 1) {
-        flagBucket = flagCounting = flagCribaEratos = flagInsertion = flagShell = true;
+        flagRadixSort = flagCounting = flagCribaEratos = flagInsertion = flagShell = true;
     }
     // Con parámetros se evalua uno por uno
     for (unsigned int i = 1; i<argc; i++) {
@@ -65,10 +64,10 @@ bool parameter_parser(int argc, char * argv[]) {
         }
     }
     // En caso de que se intoduce al menos un parámetro, y no es válido
-    if (!flagBucket && !flagCounting && !flagCribaEratos && !flagInsertion && !flagShell) return false;
+    if (!flagRadixSort && !flagCounting && !flagCribaEratos && !flagInsertion && !flagShell) return false;
     
     // Lista con Benches a ejecutar
-    std::cout << "\n\tBENCH2.o: ["<< flagShell << flagBucket << flagCounting
+    std::cout << "\n\tBENCH2.o: ["<< flagShell << flagCounting
               << flagInsertion << flagCribaEratos << flagRadixSort << "]\n";
     
     return true;
@@ -89,8 +88,8 @@ int main(int argc, char * argv[]) {
     if (flagShell) TotalBenchTime += BenchShellSort(); // ShellSort
     if (flagCounting) TotalBenchTime += BenchCountingSort();
     if (flagInsertion) TotalBenchTime += BenchInsertionSort();
-    if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
     if (flagRadixSort) TotalBenchTime += BenchRadixSort();
+    if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
 

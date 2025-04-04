@@ -13,9 +13,9 @@
 const unsigned int vecSize = static_cast<unsigned int>(std::pow(2, 16));
 
 // Variables globales para tiempos
-std::chrono::milliseconds GlobalCTime = std::chrono::milliseconds(0);
-std::chrono::milliseconds GlobalAsmTime = std::chrono::milliseconds(0);
-std::chrono::milliseconds GlobalAsmSSETime = std::chrono::milliseconds(0);
+std::chrono::milliseconds RadixGlobalCTime = std::chrono::milliseconds(0);
+std::chrono::milliseconds RadixGlobalAsmTime = std::chrono::milliseconds(0);
+std::chrono::milliseconds RadixGlobalAsmSSETime = std::chrono::milliseconds(0);
 
 // Función auxiliar para obtener el máximo valor en un vector
 int getMax(const std::vector<int>& arr) {
@@ -121,7 +121,7 @@ void radixSortAsmSSE(std::vector<int>& arr) {
 }
 
 // Generador de números aleatorios
-std::vector<int> generateInt() {
+std::vector<int> RadixgenerateInt() {
     std::vector<int> seq(vecSize);
     for (unsigned int i = 0; i < vecSize; i++) {
         seq[i] = rand() % vecSize + 1;
@@ -255,14 +255,14 @@ void radixSortASM(std::vector<int>& arr) {
 // Módulos de ejecución
 void RadixSortCExecution() {
     srand(0);
-    std::vector<int> intSeq = generateInt();
+    std::vector<int> intSeq = RadixgenerateInt();
 
     auto start = std::chrono::high_resolution_clock::now();
     radixSort(intSeq);
     auto end = std::chrono::high_resolution_clock::now();
 
     auto timeMili = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    GlobalCTime = timeMili;
+    RadixGlobalCTime = timeMili;
 
     std::cout << "\n>-C-/-C-+-+-----------\n";
     std::cout << "| INT:   " << (sortVerify(intSeq) ? "[OK - " + std::to_string(timeMili.count()) + "ms]" : "[BAD]") << "\n";
@@ -270,14 +270,14 @@ void RadixSortCExecution() {
 
 void RadixSortAsmSSEExecution() {
     srand(0);
-    std::vector<int> intSeq = generateInt();
+    std::vector<int> intSeq = RadixgenerateInt();
 
     auto start = std::chrono::high_resolution_clock::now();
     radixSortAsmSSE(intSeq);
     auto end = std::chrono::high_resolution_clock::now();
 
     auto timeMili = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    GlobalAsmSSETime = timeMili;
+    RadixGlobalAsmSSETime = timeMili;
 
     std::cout << "\n>-A-S-M-x-8-6-S-S-E---\n";
     std::cout << "| INT:   " << (sortVerify(intSeq) ? "[OK - " + std::to_string(timeMili.count()) + "ms]" : "[BAD]") << "\n";
@@ -285,14 +285,14 @@ void RadixSortAsmSSEExecution() {
 
 void RadixSortAsmExecution() {
     srand(0);
-    std::vector<int> intSeq = generateInt();
+    std::vector<int> intSeq = RadixgenerateInt();
 
     auto start = std::chrono::high_resolution_clock::now();
     radixSortASM(intSeq);
     auto end = std::chrono::high_resolution_clock::now();
 
     auto timeMili = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    GlobalAsmTime = timeMili;
+    RadixGlobalAsmTime = timeMili;
 
     std::cout << "\n>-A-S-M---x-8-6-------\n";
     std::cout << "| INT:   " << (sortVerify(intSeq) ? "[OK - " + std::to_string(timeMili.count()) + "ms]" : "[BAD]") << "\n";
@@ -306,10 +306,10 @@ std::chrono::milliseconds BenchRadixSort() {
     RadixSortCExecution();
 
     // Verificar división por cero
-    if (GlobalAsmTime.count() != 0 && GlobalAsmSSETime.count() != 0) {
+    if (RadixGlobalAsmTime.count() != 0 && RadixGlobalAsmSSETime.count() != 0) {
         // Calcular porcentajes y redondear
-        double asmBoost = std::round((static_cast<double>(GlobalCTime.count()) / GlobalAsmTime.count()) * 100.0);
-        double sseBoost = std::round((static_cast<double>(GlobalCTime.count()) / GlobalAsmSSETime.count()) * 100.0);
+        double asmBoost = std::round((static_cast<double>(RadixGlobalCTime.count()) / RadixGlobalAsmTime.count()) * 100.0);
+        double sseBoost = std::round((static_cast<double>(RadixGlobalCTime.count()) / RadixGlobalAsmSSETime.count()) * 100.0);
 
         // Imprimir resultados
         std::cout << "\n|\n| COMPARING TO C/C++:\n"
@@ -318,9 +318,9 @@ std::chrono::milliseconds BenchRadixSort() {
             << R"(\)" << std::endl;
     }
     else {
-        std::cout << "\n|\n| ERROR: División por cero. GlobalAsmTime o GlobalAsmSSETime son cero.\n"
+        std::cout << "\n|\n| ERROR: División por cero. RadixGlobalAsmTime o RadixGlobalAsmSSETime son cero.\n"
             << R"(\)" << std::endl;
     }
 
-    return (GlobalAsmTime + GlobalCTime + GlobalAsmSSETime);
+    return (RadixGlobalAsmTime + RadixGlobalCTime + RadixGlobalAsmSSETime);
 }
