@@ -24,10 +24,13 @@
     <ClCompile Include="Criba.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\CountingSort.cpp">
+    <ClCompile Include="InsertionSort.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="InsertionSort.cpp">
+    <ClCompile Include="RadixSort.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="CountingSort.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,6 +45,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="InsertionSort.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="RadixSort.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

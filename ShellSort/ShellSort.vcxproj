@@ -128,7 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\CountingSort.cpp" />
+    <ClCompile Include="CountingSort.cpp" />
     <ClCompile Include="Criba.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
     <ClCompile Include="RadixSort.cpp" />
