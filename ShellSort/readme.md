@@ -4,7 +4,7 @@
  - Yevhenii Edelhsteyn
     > Tiempo de ejecución del benchmark: 4590ms
  - Marat Galliulin
-    > Tiempo de ejecución del benchmark:
+    > Tiempo de ejecución del benchmark: 10245ms
  - Jesús Ballesteros Navarro
     > Tiempo de ejecución del benchmark: 
  - Gladys Andrea Peveroni Martinez
