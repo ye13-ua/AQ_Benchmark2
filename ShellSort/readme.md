@@ -97,6 +97,7 @@ Ejemplo del log del programa: `-aco 12345 -esi`
 
 ### ShellSort
 [GeeksForGeeks - ShellSort](https://www.geeksforgeeks.org/shell-sort/)
+
 ![ShellSortgif](https://upload.wikimedia.org/wikipedia/commons/d/d8/Sorting_shellsort_anim.gif)
 
 Evolución/Variante del InsertionSort. Cambia fundamentalmente la manera de recorrer los datos. Mientras que uno de los mayores problemas del InsertionSort implican que un elemento puede necesitar muchas iteraciónes de movimiento para alcanzar su posición correcta, el insertion sort implementa una manera de intercambiar de posición dos valores lejanos entre si.
@@ -166,6 +167,7 @@ Complejidad espacial: O(n + k), ya que requiere espacio adicional para el array 
 InsertionSort
 
 [Programiz - Insertion Sort](https://www.programiz.com/dsa/insertion-sort)
+
 ![InsertionSortgif](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
 
 Insertion Sort es un algoritmo de ordenación basado en comparación.
@@ -203,7 +205,9 @@ Integración en algoritmos híbridos (como TimSort)
 
 ### Criba de Eratosthenes
 [Descripcion Global de metodo](https://micalculadoracientifica.com/criba-de-eratostenes/)
+
 ![Criba_Gif](https://divulgadores.com/wp-content/uploads/2018/09/criba_de_eratostenes_animacion.gif)
+
 Tenemos la ejecutación de metodo de "Criba de Eratosthenes", que es un metodo sencillo para encontrar todos los números primos menores que un número dado.
 
 Funciona como:
