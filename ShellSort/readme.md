@@ -9,7 +9,7 @@ RECOMENDACIÓN: LEER readme.md CON ESTE EDITOR DE MD https://stackedit.io/app#
  - Marat Galliulin
     > Tiempo de ejecución del benchmark: 10245ms
  - Jesús Ballesteros Navarro
-    > Tiempo de ejecución del benchmark: 
+    > Tiempo de ejecución del benchmark: 14527ms
  - Gladys Andrea Peveroni Martinez
     > Tiempo de ejecución del benchmark: 9632ms
  - Enrique Mira-Perceval Lillo
