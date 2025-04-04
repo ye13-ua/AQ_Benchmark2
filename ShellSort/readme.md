@@ -127,6 +127,7 @@ Complejidad espacial: O(n + k), ya que requiere espacio adicional para el array 
 InsertionSort
 
 [Programiz - Insertion Sort](https://www.programiz.com/dsa/insertion-sort)
+![InsertionSortgif](https://en.wikipedia.org/wiki/File:Insertion-sort-example-300px.gif))
 
 Insertion Sort es un algoritmo de ordenación basado en comparación.
 Construye la lista ordenada uno a uno, insertando cada nuevo elemento en su lugar correspondiente, similar a cómo ordenarías cartas en la mano.
