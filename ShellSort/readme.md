@@ -210,3 +210,8 @@ Funciona como:
 >4. **Finalizar:** Cuando el cuadrado del siguiente número no marcado es mayor que el límite, detén el proceso. Los números que quedan sin eliminar son primos.
 
 > Es un metodo eficiente y facil de entender, que solo tiene la referencia a la lista de numeros y su eliminación en proceso sistematico. También se puede encontrar primos hasta el valor más grande posible sin necesidad de recorrer todos números en manera individual.
+
+
+# Resultados de los benchamrks
+Esta es la gráfica con los resultados de ejecución del benchamrk en 3 máquinas. Podemos pareciar una anomalía en cuanto al ordenador de Marat.
+![Resultados de ejecuión de los benchmarks](https://i.postimg.cc/ZRLb38bZ/Screenshot-20.png)
