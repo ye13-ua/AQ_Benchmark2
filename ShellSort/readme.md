@@ -2,10 +2,15 @@
 # [AQ UA24-25] BencH2.o 
 ## Autores
  - Yevhenii Edelhsteyn
+    > Tiempo de ejecución del benchmark: 4590ms
  - Marat Galliulin
+    > Tiempo de ejecución del benchmark:
  - Jesús Ballesteros Navarro
+    > Tiempo de ejecución del benchmark: 
  - Gladys Andrea Peveroni Martinez
+    > Tiempo de ejecución del benchmark:
  - Enrique Mira-Perceval Lillo
+     > Tiempo de ejecución del benchmark:
 
 # Objetivo del BENCH2.o
 Se desea implementar un benchmark que mida la capacidad de la CPU ejecutando varios algoritmos de ordenación de vectores sobre vectores de gran tamaño observando el tiempo en ms que tardan en cada ocasión cada algoritmo, se implementan dos vectores uno de enteros y otro de racionales.
