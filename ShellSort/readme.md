@@ -1,7 +1,6 @@
 ﻿
 # [AQ UA24-25] BencH2.o 
 ## Autores
-
  - Yevhenii Edelhsteyn
  - Marat Galliulin
  - Jesús Ballesteros Navarro
@@ -32,22 +31,22 @@ Para utilizar parámetros de entrada, hacer click derecho sobre el proyecto `Ben
 ## Parámetros
 Cada parámetro válido, tiene que empezar con el caracter '-' y pueden ir tanto juntos como separados
 1. 's' - ShellSort
-2. 'r' - RadixSort
-3. 'c' - CountingSort
-4. 'i' - InsertionSort
+2. 'c' - CountingSort
+3. 'i' - InsertionSort
+4. 'r' - RadixSort
 5. 'e' - CribaEratostenes
 ## Ejemplos
 
 > Entrada ---> Salida
 
 Nada ---> Todos los algoritmos
-`-sbcie` ---> Todos los algoritmos
-`-se -i -cb` ---> Todos los algoritmos
-`-bs` ---> ShellSort y BucketSort
+`-srcie` ---> Todos los algoritmos
+`-se -i -cr` ---> Todos los algoritmos
+`-rs` ---> ShellSort y RadixtSort
 
 > El interpretador de argumentos ignora todos los parámetros que no empiezan con '-' o no forman parte de la lista de par´metros previa:
 
-`-asbcieo1234` ---> Todos los algoritmos + Warnings (Ignora a, o, 1, 2, 3, 4)
+`-asrcieo1234` ---> Todos los algoritmos + Warnings (Ignora a, o, 1, 2, 3, 4)
 `-a` ---> Error ya que no se solicita ningún algoritmo, idéntico a `-`*
 `12345` ---> Argumento completo ignorado por no empezar con '-'
 
@@ -71,7 +70,7 @@ Ejemplo del log del programa: `-aco 12345 -esi`
 
 > Donde el parámetro 0 es el propio programa (cosas del C/C++)
 > y [10111] es la lista de algoritmos en orden de la lista del
-> readme.md []: ShellSort = true, bucketSort = false, etc.
+> readme.md []: ShellSort = true, RadixSort = false, etc.
 
 # Algoritmos integrados
 ## Algoritmos de ordenamiento
@@ -82,6 +81,11 @@ Ejemplo del log del programa: `-aco 12345 -esi`
     > Jesús Ballesteros Navarro
 	> CoutingSort.cpp || CoutingSort.h
 3. InstertionSort
+    > Gladys Andrea Peveroni Martinez
+    > InsertionSort.cpp || InsertionSort.h
+4. RadixSort
+    > Enrique Mira-Perceval Lillo
+    > RadixSort.cpp || RadixSort.h
 
 ### ShellSort
 [GeeksForGeeks - ShellSort](https://www.geeksforgeeks.org/shell-sort/)

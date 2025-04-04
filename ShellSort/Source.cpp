@@ -68,7 +68,7 @@ bool parameter_parser(int argc, char * argv[]) {
     
     // Lista con Benches a ejecutar
     std::cout << "\n\tBENCH2.o: ["<< flagShell << flagCounting
-              << flagInsertion << flagCribaEratos << flagRadixSort << "]\n";
+              << flagInsertion << flagRadixSort<< flagCribaEratos << "]\n";
     
     return true;
 }
