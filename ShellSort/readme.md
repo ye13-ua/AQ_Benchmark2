@@ -8,7 +8,7 @@
  - Jesús Ballesteros Navarro
     > Tiempo de ejecución del benchmark: 
  - Gladys Andrea Peveroni Martinez
-    > Tiempo de ejecución del benchmark:
+    > Tiempo de ejecución del benchmark: 9632ms
  - Enrique Mira-Perceval Lillo
      > Tiempo de ejecución del benchmark:
 
