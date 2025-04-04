@@ -16,7 +16,7 @@
 
 using namespace std;
 
-const unsigned int vecSize = pow(2, 16);
+const unsigned int vecSize = pow(2, 14);
 
 void initSeed();
 bool sortVerifyInt(vector<int> vec);

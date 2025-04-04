@@ -24,10 +24,10 @@
     <ClCompile Include="Criba.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\CountingSort.cpp">
+    <ClCompile Include="InsertionSort.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="InsertionSort.cpp">
+    <ClCompile Include="CountingSort.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
