@@ -223,3 +223,8 @@ Funciona como:
 Esta es la gráfica con los resultados de ejecución del benchamrk en 3 máquinas. Podemos pareciar una anomalía en cuanto al ordenador de Marat.
 
 ![Resultados de ejecuión de los benchmarks](https://i.postimg.cc/ZRLb38bZ/Screenshot-20.png)
+
+Ordenadores usados para las pruebas
+
+![Resultados de ejecuión de los benchmarks](https://i.postimg.cc/CKr16HyN/Screenshot-21.png)
+
