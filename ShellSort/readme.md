@@ -6,7 +6,7 @@
  - Marat Galliulin
  - Jesús Ballesteros Navarro
  - Gladys Andrea Peveroni Martinez
- - a
+ - Enrique Mira-Perceval Lillo
 
 # Objetivo del BENCH2.o
 Se desea implementar un benchmark que mida la capacidad de la CPU ejecutando varios algoritmos de ordenación de vectores sobre vectores de gran tamaño observando el tiempo en ms que tardan en cada ocasión cada algoritmo, se implementan dos vectores uno de enteros y otro de racionales.
@@ -32,6 +32,7 @@ Para utilizar parámetros de entrada, hacer click derecho sobre el proyecto `Ben
 ## Parámetros
 Cada parámetro válido, tiene que empezar con el caracter '-' y pueden ir tanto juntos como separados
 1. 's' - ShellSort
+2. 'r' - RadixSort
 3. 'c' - CountingSort
 4. 'i' - InsertionSort
 5. 'e' - CribaEratostenes
@@ -101,6 +102,32 @@ Complejidad espacial: O(1), es constante ya que opera sobre el mismo set de dato
 
 > Tanto el caso mejor como peor son superiores en ShellSort en comparación con InsertionSort, pero el caso promeidio de InsertionSort es considerablemente peor que el caso promedio de ShellSort O(n ^2^) > O(n ^1.25^)
 
+### RadixSort
+
+[Programiz - CountingSort](https://www.programiz.com/dsa/radix-sort)
+
+RadixSort es un algoritmo de ordenación no comparativo que ordena números procesando sus dígitos individuales. 
+Funciona distribuyendo los elementos según cada dígito, comenzando por el dígito menos significativo (LSD - Least Significant Digit) 
+hasta el más significativo (MSD - Most Significant Digit), utilizando otro algoritmo estable como CountingSort para ordenar según cada posición.
+
+Es especialmente eficiente cuando se trata de ordenar grandes cantidades de enteros con un número limitado de dígitos.
+
+Algoritmo:
+-1 Encontrar el valor máximo en el arreglo para saber cuántos dígitos tiene el número más grande.
+-2 Iterar sobre cada posición decimal (unidades, decenas, centenas...) desde el dígito menos significativo hasta el más significativo.
+-3 En cada iteración, ordenar los elementos según el dígito actual, utilizando un algoritmo estable (como CountingSort).
+-4 Repetir el proceso hasta haber procesado todos los dígitos.
+
+Complejidad:
+Caso peor: O(d × (n + k))
+Caso mejor: O(d × (n + k))
+Caso promedio: O(d × (n + k))
+Donde:
+n es el número de elementos.
+k es el rango de dígitos posibles (por ejemplo, 10 para base decimal).
+d es el número de dígitos del número más grande.
+
+Complejidad espacial: O(n + k), por el uso de arreglos temporales y de conteo.
 
 ### CountingSort
 [Programiz - CountingSort](https://www.programiz.com/dsa/counting-sort#:~:text=Counting%20sort%20is%20a%20sorting,index%20of%20the%20auxiliary%20array.)

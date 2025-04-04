@@ -7,6 +7,7 @@
 #include "CountingSort.h"
 #include "Criba.h"
 #include "InsertionSort.h"
+#include "RadixSort.h"
 
 // Banderas de ejecución de algoritmos
 bool flagShell = false; // s
@@ -14,6 +15,7 @@ bool flagBucket = false; // b
 bool flagCounting = false; // c
 bool flagInsertion = false; // i
 bool flagCribaEratos = false; // e
+bool flagRadixSort = false; // r
 
 // Título
 // Se guarda dentro del codigo para ahorrar la necesidad de manipular archivos
@@ -50,6 +52,7 @@ bool parameter_parser(int argc, char * argv[]) {
                 case 'c': flagCounting = true; break;
                 case 'i': flagInsertion = true; break;
                 case 'e': flagCribaEratos =  true; break;
+                case 'r': flagRadixSort = true; break;
                 default:
                     std::cout << "\tWARNING: UNKNOWN char PARAMETER AT ARGUMENT ["
                         << i << "] WITH VALUE: [" << argv[i][j] << "] - VALUE IGNORED\n";
@@ -66,7 +69,7 @@ bool parameter_parser(int argc, char * argv[]) {
     
     // Lista con Benches a ejecutar
     std::cout << "\n\tBENCH2.o: ["<< flagShell << flagBucket << flagCounting
-              << flagInsertion << flagCribaEratos << "]\n";
+              << flagInsertion << flagCribaEratos << flagRadixSort << "]\n";
     
     return true;
 }
@@ -87,6 +90,7 @@ int main(int argc, char * argv[]) {
     if (flagCounting) TotalBenchTime += BenchCountingSort();
     if (flagInsertion) TotalBenchTime += BenchInsertionSort();
     if (flagCribaEratos) TotalBenchTime += BenchCriba(); // Criba
+    if (flagRadixSort) TotalBenchTime += BenchRadixSort();
 
     std::cout << "\n [GLOBAL EXECUTION TIME: " << TotalBenchTime.count() <<"ms]\n PRESS ENTER TO EXIT:";
 
